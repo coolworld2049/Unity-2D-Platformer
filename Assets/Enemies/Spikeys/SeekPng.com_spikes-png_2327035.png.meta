@@ -1,0 +1,447 @@
+fileFormatVersion: 2
+guid: 0788aecbac9949743884c5bb0f69daa6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -695323745414836376
+    second: SeekPng.com_spikes-png_2327035_0
+  - first:
+      213: 1008352349161242751
+    second: SeekPng.com_spikes-png_2327035_1
+  - first:
+      213: 2698195154566040949
+    second: SeekPng.com_spikes-png_2327035_2
+  - first:
+      213: 7650109238315676168
+    second: SeekPng.com_spikes-png_2327035_3
+  - first:
+      213: -744279142803847179
+    second: SeekPng.com_spikes-png_2327035_4
+  - first:
+      213: 3181879777582482750
+    second: SeekPng.com_spikes-png_2327035_5
+  - first:
+      213: -4422392922653676328
+    second: SeekPng.com_spikes-png_2327035_6
+  - first:
+      213: -963841463483410824
+    second: SeekPng.com_spikes-png_2327035_7
+  - first:
+      213: -9033842170825283505
+    second: SeekPng.com_spikes-png_2327035_8
+  - first:
+      213: -4985061865266112492
+    second: SeekPng.com_spikes-png_2327035_9
+  - first:
+      213: 1610667822201531074
+    second: SeekPng.com_spikes-png_2327035_10
+  - first:
+      213: -4183131145534310371
+    second: SeekPng.com_spikes-png_2327035_11
+  - first:
+      213: -6876733078472470094
+    second: SeekPng.com_spikes-png_2327035_12
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 42
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 119
+        width: 42
+        height: 305
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86f87aeccb6b956f0800000000000000
+      internalID: -695323745414836376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 173
+        width: 39
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f70cf2c7e136efd00800000000000000
+      internalID: 1008352349161242751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 230
+        width: 175
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57dc69a823ae17520800000000000000
+      internalID: 2698195154566040949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_3
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 381
+        width: 91
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8027dbaf1d5aa2a60800000000000000
+      internalID: 7650109238315676168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_4
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 324
+        width: 40
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7c17f101acba5f0800000000000000
+      internalID: -744279142803847179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_5
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 220
+        width: 57
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e358dc4acce482c20800000000000000
+      internalID: 3181879777582482750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 282
+        width: 145
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dca604511180a2c0800000000000000
+      internalID: -4422392922653676328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_7
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 32
+        width: 182
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 876574dab4fbf92f0800000000000000
+      internalID: -963841463483410824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_8
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 185
+        width: 95
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f48e303b86851a280800000000000000
+      internalID: -9033842170825283505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_9
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 102
+        width: 45
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 418977145a081dab0800000000000000
+      internalID: -4985061865266112492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_10
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 42
+        width: 102
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ca6971c9dd3a5610800000000000000
+      internalID: 1610667822201531074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_11
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1
+        width: 65
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d18fd85e26882f5c0800000000000000
+      internalID: -4183131145534310371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SeekPng.com_spikes-png_2327035_12
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 68
+        width: 158
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b1587a13bfe090a0800000000000000
+      internalID: -6876733078472470094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      SeekPng.com_spikes-png_2327035_3: 7650109238315676168
+      SeekPng.com_spikes-png_2327035_8: -9033842170825283505
+      SeekPng.com_spikes-png_2327035_4: -744279142803847179
+      SeekPng.com_spikes-png_2327035_6: -4422392922653676328
+      SeekPng.com_spikes-png_2327035_0: -695323745414836376
+      SeekPng.com_spikes-png_2327035_12: -6876733078472470094
+      SeekPng.com_spikes-png_2327035_10: 1610667822201531074
+      SeekPng.com_spikes-png_2327035_5: 3181879777582482750
+      SeekPng.com_spikes-png_2327035_11: -4183131145534310371
+      SeekPng.com_spikes-png_2327035_2: 2698195154566040949
+      SeekPng.com_spikes-png_2327035_9: -4985061865266112492
+      SeekPng.com_spikes-png_2327035_1: 1008352349161242751
+      SeekPng.com_spikes-png_2327035_7: -963841463483410824
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
