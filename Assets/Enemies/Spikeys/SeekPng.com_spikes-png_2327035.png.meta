@@ -63,6 +63,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -71,9 +72,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -424,6 +425,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      SeekPng.com_spikes-png_2327035_3: 7650109238315676168
+      SeekPng.com_spikes-png_2327035_8: -9033842170825283505
+      SeekPng.com_spikes-png_2327035_4: -744279142803847179
+      SeekPng.com_spikes-png_2327035_6: -4422392922653676328
+      SeekPng.com_spikes-png_2327035_0: -695323745414836376
+      SeekPng.com_spikes-png_2327035_12: -6876733078472470094
+      SeekPng.com_spikes-png_2327035_10: 1610667822201531074
+      SeekPng.com_spikes-png_2327035_5: 3181879777582482750
+      SeekPng.com_spikes-png_2327035_11: -4183131145534310371
+      SeekPng.com_spikes-png_2327035_2: 2698195154566040949
+      SeekPng.com_spikes-png_2327035_9: -4985061865266112492
+      SeekPng.com_spikes-png_2327035_1: 1008352349161242751
+      SeekPng.com_spikes-png_2327035_7: -963841463483410824
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
