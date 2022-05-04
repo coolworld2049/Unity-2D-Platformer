@@ -10,11 +10,11 @@ public class MovingPlatform : MonoBehaviour
 
 	private Rigidbody2D rb;
 
-	// траектория  движения объекта
+	// С‚СЂР°РµРєС‚РѕСЂРёСЏ  РґРІРёР¶РµРЅРёСЏ РѕР±СЉРµРєС‚Р°
 	public Transform bound_1;
 	public Transform bound_2;
 
-	// чекбоксы выбора направления объекта
+	// С‡РµРєР±РѕРєСЃС‹ РІС‹Р±РѕСЂР° РЅР°РїСЂР°РІР»РµРЅРёСЏ РѕР±СЉРµРєС‚Р°
 	public bool VerticalMove;
 	public bool HorizontalMove = false;
 
@@ -25,7 +25,7 @@ public class MovingPlatform : MonoBehaviour
 
 	void Update()
 	{
-		// выбор метода движения в инспекторе
+		// РІС‹Р±РѕСЂ РјРµС‚РѕРґР° РґРІРёР¶РµРЅРёСЏ РІ РёРЅСЃРїРµРєС‚РѕСЂРµ
 		if (VerticalMove)
 		{
 			if (gameObject.transform.position.y <= bound_2.position.y)

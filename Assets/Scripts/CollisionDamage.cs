@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CollisionDamage : MonoBehaviour
 {
-    public int collisonDamage = 20; //наносимый урон
-    public string collisionDamageTag; //кому наносить урон
+    public int collisonDamage = 20; //РЅР°РЅРѕСЃРёРјС‹Р№ СѓСЂРѕРЅ
+    public string collisionDamageTag; //РєРѕРјСѓ РЅР°РЅРѕСЃРёС‚СЊ СѓСЂРѕРЅ
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == collisionDamageTag)
         {
-            Health health = collision.collider.GetComponent<Health>(); //экземпляр класса
-            health.TakeDamage(collisonDamage); //обращение к методу получения урона из класса Health
+            Health health = collision.collider.GetComponent<Health>(); //СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°
+            health.TakeDamage(collisonDamage); //РѕР±СЂР°С‰РµРЅРёРµ Рє РјРµС‚РѕРґСѓ РїРѕР»СѓС‡РµРЅРёСЏ СѓСЂРѕРЅР° РёР· РєР»Р°СЃСЃР° Health
         }
     }
 }

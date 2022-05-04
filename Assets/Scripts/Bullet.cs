@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int speed = 10; //скорость пули
+    public int speed = 10; //СЃРєРѕСЂРѕСЃС‚СЊ РїСѓР»Рё
     public bool fastBullet = false;
-    public string toDamageTag; //кому нанести урон
+    public string toDamageTag; //РєРѕРјСѓ РЅР°РЅРµСЃС‚Рё СѓСЂРѕРЅ
     public int collisonDamage;
     private Rigidbody2D rb;
     private Animator anim;
@@ -18,25 +18,27 @@ public class Bullet : MonoBehaviour
 
         if (fastBullet == true)
         {
-            rb.velocity = transform.right * speed * 2; //движение префабов пуль ускоренно
+            rb.velocity = transform.right * speed * 2; //РґРІРёР¶РµРЅРёРµ РїСЂРµС„Р°Р±РѕРІ РїСѓР»СЊ СѓСЃРєРѕСЂРµРЅРЅРѕ
         }
 
         if (fastBullet == false)
         {
-            rb.velocity = transform.right * speed; //движение префабов пуль
+            rb.velocity = transform.right * speed; //РґРІРёР¶РµРЅРёРµ РїСЂРµС„Р°Р±РѕРІ РїСѓР»СЊ
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag != null)
+        if (collision.gameObject.tag == toDamageTag)
         {
-            if (collision.gameObject.tag == toDamageTag)
-            {
-                Health health = collision.gameObject.GetComponent<Health>(); //экземпляр класса
-                health.TakeDamage(collisonDamage); //обращение к методу получения урона из класса Health
-            }
-            Destroy(gameObject); //пуля уничтожается при соприкосновении его колайдера с любым объектом
+            Health health = collision.gameObject.GetComponent<Health>(); //СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР°
+            health.TakeDamage(collisonDamage); //РѕР±СЂР°С‰РµРЅРёРµ Рє РјРµС‚РѕРґСѓ РїРѕР»СѓС‡РµРЅРёСЏ СѓСЂРѕРЅР° РёР· РєР»Р°СЃСЃР° Health
+            Destroy(gameObject); //РїСѓР»СЏ СѓРЅРёС‡С‚РѕР¶Р°РµС‚СЃСЏ РїСЂРё СЃРѕРїСЂРёРєРѕСЃРЅРѕРІРµРЅРёРё РµРіРѕ РєРѕР»Р°Р№РґРµСЂР° СЃ Р»СЋР±С‹Рј РѕР±СЉРµРєС‚РѕРј
         }
+        else if (collision.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject); //РїСѓР»СЏ СѓРЅРёС‡С‚РѕР¶Р°РµС‚СЃСЏ РїСЂРё СЃРѕРїСЂРёРєРѕСЃРЅРѕРІРµРЅРёРё РµРіРѕ РєРѕР»Р°Р№РґРµСЂР° СЃ Р»СЋР±С‹Рј РѕР±СЉРµРєС‚РѕРј
+        }
+        
     }
 }

@@ -7,14 +7,14 @@ public class Scenes : MonoBehaviour
 {
     public void LoadScene(int numberScene)
     {
-        SceneManager.LoadScene(numberScene); // загрузка сцены по номеру в Build Setting
+        SceneManager.LoadScene(numberScene); // Р·Р°РіСЂСѓР·РєР° СЃС†РµРЅС‹ РїРѕ РЅРѕРјРµСЂСѓ РІ Build Setting
     }
 
     public void LoadNextScene()
     {
         if (SceneManager.GetActiveScene().buildIndex <= 4)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // загрузка сцены по номеру в Build Setting
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Р·Р°РіСЂСѓР·РєР° СЃС†РµРЅС‹ РїРѕ РЅРѕРјРµСЂСѓ РІ Build Setting
         }
     }
     
@@ -25,6 +25,6 @@ public class Scenes : MonoBehaviour
 
     public void ExitGame()
     {
-        Application.Quit(); // выход из игры на рабочий стол
+        Application.Quit(); // РІС‹С…РѕРґ РёР· РёРіСЂС‹ РЅР° СЂР°Р±РѕС‡РёР№ СЃС‚РѕР»
     }
 }

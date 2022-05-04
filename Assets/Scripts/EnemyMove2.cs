@@ -10,13 +10,13 @@ public class EnemyMove2 : MonoBehaviour
 
 	private Rigidbody2D rb;
 
-	// траектория  движения объекта
+	// С‚СЂР°РµРєС‚РѕСЂРёСЏ  РґРІРёР¶РµРЅРёСЏ РѕР±СЉРµРєС‚Р°
 	public Transform point_1;
 	public Transform point_2;
 
-	// чекбоксы выбора направления объекта
+	// С‡РµРєР±РѕРєСЃС‹ РІС‹Р±РѕСЂР° РЅР°РїСЂР°РІР»РµРЅРёСЏ РѕР±СЉРµРєС‚Р°
 	public bool VerticalMove;
-	public bool HorizontalMove = false;
+	public bool HorizontalMove;
 
 	void Start()
 	{
@@ -25,7 +25,7 @@ public class EnemyMove2 : MonoBehaviour
 
 	void Update()
 	{
-		// выбор метода движения в инспекторе
+		// РІС‹Р±РѕСЂ РјРµС‚РѕРґР° РґРІРёР¶РµРЅРёСЏ РІ РёРЅСЃРїРµРєС‚РѕСЂРµ
 		if (VerticalMove)
         {
 			if (gameObject.transform.position.y <= point_2.position.y)
@@ -64,7 +64,8 @@ public class EnemyMove2 : MonoBehaviour
 		{
 			if (health.HealthInitial > 0)
 			{
-				rb.velocity = new Vector2(rb.velocity.x, Speed ); //обращаемся к компоненту врага RigidBody2D и задаем ему скорость по оси Х, 
+				rb.velocity = new Vector2(rb.velocity.x, Speed ); 
+				//РѕР±СЂР°С‰Р°РµРјСЃСЏ Рє РєРѕРјРїРѕРЅРµРЅС‚Сѓ РІСЂР°РіР° RigidBody2D Рё Р·Р°РґР°РµРј РµРјСѓ СЃРєРѕСЂРѕСЃС‚СЊ РїРѕ РѕСЃРё РҐ, 
 			}
 
 			if (health.HealthInitial <= 0)
@@ -77,7 +78,8 @@ public class EnemyMove2 : MonoBehaviour
 		{
 			if (health.HealthInitial > 0)
 			{
-				rb.velocity = new Vector2(rb.velocity.x, -Speed); //обращаемся к компоненту врага RigidBody2D и задаем ему скорость по оси Х, 
+				rb.velocity = new Vector2(rb.velocity.x, -Speed);
+				//РѕР±СЂР°С‰Р°РµРјСЃСЏ Рє РєРѕРјРїРѕРЅРµРЅС‚Сѓ РІСЂР°РіР° RigidBody2D Рё Р·Р°РґР°РµРј РµРјСѓ СЃРєРѕСЂРѕСЃС‚СЊ РїРѕ РѕСЃРё РҐ, 
 			}
 
 			if (health.HealthInitial <= 0)
@@ -95,7 +97,8 @@ public class EnemyMove2 : MonoBehaviour
 		{
 			if (health.HealthInitial > 0)
 			{
-				rb.velocity = new Vector2(Speed, rb.velocity.y); //обращаемся к компоненту врага RigidBody2D и задаем ему скорость по оси Х, 
+				rb.velocity = new Vector2(Speed, rb.velocity.y); 
+				//РѕР±СЂР°С‰Р°РµРјСЃСЏ Рє РєРѕРјРїРѕРЅРµРЅС‚Сѓ РІСЂР°РіР° RigidBody2D Рё Р·Р°РґР°РµРј РµРјСѓ СЃРєРѕСЂРѕСЃС‚СЊ РїРѕ РѕСЃРё РҐ, 
 			}
 
 			if (health.HealthInitial <= 0)
@@ -108,7 +111,8 @@ public class EnemyMove2 : MonoBehaviour
 		{
 			if (health.HealthInitial > 0)
 			{
-				rb.velocity = new Vector2(-Speed, rb.velocity.y); //обращаемся к компоненту врага RigidBody2D и задаем ему скорость по оси Х, 
+				rb.velocity = new Vector2(-Speed, rb.velocity.y); 
+				//РѕР±СЂР°С‰Р°РµРјСЃСЏ Рє РєРѕРјРїРѕРЅРµРЅС‚Сѓ РІСЂР°РіР° RigidBody2D Рё Р·Р°РґР°РµРј РµРјСѓ СЃРєРѕСЂРѕСЃС‚СЊ РїРѕ РѕСЃРё РҐ, 
 			}
 
 			if (health.HealthInitial <= 0)

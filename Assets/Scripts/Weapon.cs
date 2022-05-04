@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public Transform[] firePoint; //позиция из которой будут вылетать пули
-    public GameObject[] bulletPrefab; //префаб пуль
-    public GameObject[] weaponName; //объекты пушек
+    public Transform[] firePoint; //РїРѕР·РёС†РёСЏ РёР· РєРѕС‚РѕСЂРѕР№ Р±СѓРґСѓС‚ РІС‹Р»РµС‚Р°С‚СЊ РїСѓР»Рё
+    public GameObject[] bulletPrefab; //РїСЂРµС„Р°Р± РїСѓР»СЊ
+    public GameObject[] weaponName; //РѕР±СЉРµРєС‚С‹ РїСѓС€РµРє
 
     private int gun_0 = 0;
     private int gun_1 = 1;
