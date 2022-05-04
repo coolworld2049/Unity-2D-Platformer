@@ -52,7 +52,7 @@ public class GameEndMenu : MonoBehaviour
                 highScore.text = ch.countCrystall.ToString();
             }
 
-            else if (SceneManager.GetActiveScene().buildIndex == 4) // загрузка winLoseMenuGameEnd со счетом
+            else if (SceneManager.GetActiveScene().buildIndex == 4) // Р·Р°РіСЂСѓР·РєР° winLoseMenuGameEnd СЃРѕ СЃС‡РµС‚РѕРј
             {
                 winLoseMenuEndGame.SetActive(true);
                 Time.timeScale = 0f;

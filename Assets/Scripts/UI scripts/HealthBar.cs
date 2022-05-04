@@ -10,13 +10,13 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>(); // доступ к скрипту Health игрок Player
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>(); // РґРѕСЃС‚СѓРї Рє СЃРєСЂРёРїС‚Сѓ Health РёРіСЂРѕРє Player
         healthBar = GetComponent<Slider>();
     }
 
     private void Update()
     {
-        healthBar.value = playerHealth.HealthInitial; // устновка значения слайдера шкалы здоровья
+        healthBar.value = playerHealth.HealthInitial; // СѓСЃС‚РЅРѕРІРєР° Р·РЅР°С‡РµРЅРёСЏ СЃР»Р°Р№РґРµСЂР° С€РєР°Р»С‹ Р·РґРѕСЂРѕРІСЊСЏ
     }
 }
 

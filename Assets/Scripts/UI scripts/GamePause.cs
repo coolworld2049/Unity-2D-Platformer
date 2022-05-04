@@ -9,7 +9,7 @@ public class GamePause : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // игра останавливается если была нажата клавиша Escape
+        if (Input.GetKeyDown(KeyCode.Escape)) // РёРіСЂР° РѕСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РµСЃР»Рё Р±С‹Р»Р° РЅР°Р¶Р°С‚Р° РєР»Р°РІРёС€Р° Escape
         {
             if (gameIsPaused)
             {
@@ -25,14 +25,14 @@ public class GamePause : MonoBehaviour
     public void Resume()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f; // возобновлеие процесса игры
+        Time.timeScale = 1f; // РІРѕР·РѕР±РЅРѕРІР»РµРёРµ РїСЂРѕС†РµСЃСЃР° РёРіСЂС‹
         gameIsPaused = false;
     }
 
     public void Pause()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 0f; // остановка процесса игры
+        Time.timeScale = 0f; // РѕСЃС‚Р°РЅРѕРІРєР° РїСЂРѕС†РµСЃСЃР° РёРіСЂС‹
         gameIsPaused = true;
     }
 

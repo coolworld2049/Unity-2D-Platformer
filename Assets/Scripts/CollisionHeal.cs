@@ -5,17 +5,17 @@ using UnityEngine;
 public class CollisionHeal : MonoBehaviour
 {
     public int collisonHeal = 50;
-    public string collisionHealTag; //какому объекту восстановить здоровье
+    public string collisionHealTag; //РєР°РєРѕРјСѓ РѕР±СЉРµРєС‚Сѓ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Р·РґРѕСЂРѕРІСЊРµ
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == collisionHealTag)
         {
             Health health = collision.gameObject.GetComponent<Health>();
-            health.HealthRecovery(collisonHeal); //восстановление здоровья подбираемым бонусом
+            health.HealthRecovery(collisonHeal); //РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ Р·РґРѕСЂРѕРІСЊСЏ РїРѕРґР±РёСЂР°РµРјС‹Рј Р±РѕРЅСѓСЃРѕРј
         }
 
-        if (gameObject.CompareTag("Bonus") == true) //уничтожение бонуса к здоровью после столкновения с ним
+        if (gameObject.CompareTag("Bonus") == true) //СѓРЅРёС‡С‚РѕР¶РµРЅРёРµ Р±РѕРЅСѓСЃР° Рє Р·РґРѕСЂРѕРІСЊСЋ РїРѕСЃР»Рµ СЃС‚РѕР»РєРЅРѕРІРµРЅРёСЏ СЃ РЅРёРј
         {
             Destroy(gameObject);
         }

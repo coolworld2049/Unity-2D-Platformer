@@ -18,7 +18,7 @@ public class CharacterMove : MonoBehaviour
 
     private Animator anim;
     private Rigidbody2D rb;
-    private BoxCollider2D bc;
+    private EdgeCollider2D ec;
     private CircleCollider2D ccl;
 
     public TMP_Text countCrystallText; // текстовое поле для вывода счета кристаллов
@@ -30,7 +30,7 @@ public class CharacterMove : MonoBehaviour
         //инициализация компнентов UnityEngine принадлежащих объекту игрока
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
+        ec = GetComponent<EdgeCollider2D>();
         ccl = GetComponent<CircleCollider2D>();
         ccl.enabled = false;
     }
@@ -155,7 +155,7 @@ public class CharacterMove : MonoBehaviour
         {
             if(shiftPressed)
             {
-                bc.enabled = false; //выключается исходный коллайдер (BoxCollider2D)
+                ec.enabled = false; //выключается исходный коллайдер (BoxCollider2D)
                 ccl.enabled = true; //включается коллайдер круга (CircleCollider2D)
                 anim.SetBool("TapKeyShift", true); //анимация шара
 
@@ -168,7 +168,7 @@ public class CharacterMove : MonoBehaviour
 
             else
             {
-                bc.enabled = true; //выключается исходный коллайдер (BoxCollider2D)
+                ec.enabled = true; //выключается исходный коллайдер (BoxCollider2D)
                 ccl.enabled = false; //включается коллайдер круга (CircleCollider2D)
                 anim.SetBool("TapKeyShift", false); //анимация шара
 

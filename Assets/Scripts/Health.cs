@@ -16,35 +16,35 @@ public class Health : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void HealthRecovery(int bonusHealth) //bonusHealth устанавливется в скрипте CollisionHeal
+    public void HealthRecovery(int bonusHealth) //bonusHealth СѓСЃС‚Р°РЅР°РІР»РёРІРµС‚СЃСЏ РІ СЃРєСЂРёРїС‚Рµ CollisionHeal
     {
         if (gameObject.tag == "Player")
         {
             if (HealthInitial < 100)
             {
-                HealthInitial += bonusHealth; // подбор бонуса и увеличение здоровья
+                HealthInitial += bonusHealth; // РїРѕРґР±РѕСЂ Р±РѕРЅСѓСЃР° Рё СѓРІРµР»РёС‡РµРЅРёРµ Р·РґРѕСЂРѕРІСЊСЏ
             }
 
             if (HealthInitial >= 100)
             {
-                HealthInitial = healthMax; //максимальное здоровье равняется 100
+                HealthInitial = healthMax; //РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РґРѕСЂРѕРІСЊРµ СЂР°РІРЅСЏРµС‚СЃСЏ 100
             }
             Debug.Log(HealthInitial);
         }  
     }
 
-    public void TakeDamage(int damage) //damage устанавливется в скрипте CollisionDamage
+    public void TakeDamage(int damage) //damage СѓСЃС‚Р°РЅР°РІР»РёРІРµС‚СЃСЏ РІ СЃРєСЂРёРїС‚Рµ CollisionDamage
     {
         HealthInitial -= damage;
 
         if (gameObject.tag == "Player")
         {
-            rb.AddForce(transform.up * 10, ForceMode2D.Impulse); //отскок от врага при столкновении с ним и получении урона
+            rb.AddForce(transform.up * 10, ForceMode2D.Impulse); //РѕС‚СЃРєРѕРє РѕС‚ РІСЂР°РіР° РїСЂРё СЃС‚РѕР»РєРЅРѕРІРµРЅРёРё СЃ РЅРёРј Рё РїРѕР»СѓС‡РµРЅРёРё СѓСЂРѕРЅР°
             rb.velocity = new Vector2(6, rb.velocity.y);
 
             if (HealthInitial <= 0)
             {
-                animator.SetFloat("playerHealth", 0); //анимация смерти игрока и его уничтожение 
+                animator.SetFloat("playerHealth", 0); //Р°РЅРёРјР°С†РёСЏ СЃРјРµСЂС‚Рё РёРіСЂРѕРєР° Рё РµРіРѕ СѓРЅРёС‡С‚РѕР¶РµРЅРёРµ 
                 Destroy(gameObject, 2f);
             }
             Debug.Log(HealthInitial);
@@ -57,7 +57,7 @@ public class Health : MonoBehaviour
 
             if (HealthInitial <= 0)
             {
-                animator.SetFloat("enemyHealth", 0); //анимация смерти врага
+                animator.SetFloat("enemyHealth", 0); //Р°РЅРёРјР°С†РёСЏ СЃРјРµСЂС‚Рё РІСЂР°РіР°
                 animator.SetFloat("enemy_2Health", 0);
                 animator.SetFloat("enemy_3Health", 0);
                 Destroy(gameObject, 0.7f);
