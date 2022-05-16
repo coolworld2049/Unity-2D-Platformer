@@ -30,6 +30,12 @@
       "source": "builtin",
       "dependencies": {}
     },
+    "com.unity.2d.tilemap": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.6.5",
       "depth": 2,
@@ -138,7 +144,7 @@
       }
     },
     "com.unity.visualscripting": {
-      "version": "1.7.7",
+      "version": "1.7.8",
       "depth": 0,
       "source": "registry",
       "dependencies": {

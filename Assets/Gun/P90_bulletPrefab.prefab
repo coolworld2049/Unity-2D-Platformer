@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24c86b8673b30449af80cd345a63092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 80
+  speed: 50
   fastBullet: 0
   toDamageTag: Enemy
-  collisonDamage: 40
+  collisonDamage: 10
