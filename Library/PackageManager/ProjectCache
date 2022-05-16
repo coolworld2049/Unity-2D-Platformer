@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637872725444949897
-    m_Hash: 3101397739
+      ticks: 637883100224020531
+    m_Hash: 2588489100
   m_LockFileStatus:
     m_FilePath: C:/Users/R/Unity Projects/Unity-2D-Platformer/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637872725444979900
-    m_Hash: 3796451923
+      ticks: 637883100224070438
+    m_Hash: 451044148
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -189,6 +189,56 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 7.0.4
+    nextVersion: 
+- packageId: com.unity.2d.tilemap@1.0.0
+  testable: 0
+  isDirectDependency: 1
+  version: 1.0.0
+  source: 2
+  resolvedPath: C:\Users\R\Unity Projects\Unity-2D-Platformer\Library\PackageCache\com.unity.2d.tilemap@1.0.0
+  assetPath: Packages/com.unity.2d.tilemap
+  name: com.unity.2d.tilemap
+  displayName: 2D Tilemap Editor
+  author:
+    name: 
+    email: 
+    url: 
+  category: 2D
+  type: 
+  description: 2D Tilemap Editor is a package that contains editor functionalities
+    for editing Tilemaps.
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 1.0.0
+    compatible:
+    - 1.0.0
+    verified: 1.0.0
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - 2d
+  - Tilemap
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 1.0.0
     nextVersion: 
 - packageId: com.unity.cinemachine@2.8.4
   testable: 0
@@ -1096,12 +1146,12 @@ m_ResolvedPackages:
   unityLifecycle:
     version: 1.0.0
     nextVersion: 
-- packageId: com.unity.visualscripting@1.7.7
+- packageId: com.unity.visualscripting@1.7.8
   testable: 0
   isDirectDependency: 1
-  version: 1.7.7
+  version: 1.7.8
   source: 1
-  resolvedPath: C:\Users\R\Unity Projects\Unity-2D-Platformer\Library\PackageCache\com.unity.visualscripting@1.7.7
+  resolvedPath: C:\Users\R\Unity Projects\Unity-2D-Platformer\Library\PackageCache\com.unity.visualscripting@1.7.8
   assetPath: Packages/com.unity.visualscripting
   name: com.unity.visualscripting
   displayName: Visual Scripting
@@ -1141,11 +1191,13 @@ m_ResolvedPackages:
     - 1.7.5
     - 1.7.6
     - 1.7.7
+    - 1.7.8
     - 1.8.0-pre.1
     compatible:
     - 1.7.6
     - 1.7.7
-    verified: 1.7.7
+    - 1.7.8
+    verified: 1.7.8
   dependencies:
   - name: com.unity.ugui
     version: 1.0.0
@@ -1170,13 +1222,13 @@ m_ResolvedPackages:
     capabilities: 7
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 637798354510000000
+  datePublishedTicks: 637878097330000000
   documentationUrl: 
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.visualscripting.git
-    revision: 21e90c37a6500e62ae5a293cadf995e74d5f6905
+    revision: 775a560e6602f51ff05aca02264f8bed4d415fd3
     path: 
   unityLifecycle:
     version: 1.7.6
@@ -3088,6 +3140,7 @@ m_ResolvedPackages:
     - 2.0.2
     - 2.1.0
     - 2.1.1
+    - 2.1.2
     - 3.0.0
     - 3.0.1
     - 4.0.0
@@ -3096,6 +3149,7 @@ m_ResolvedPackages:
     - 4.0.3
     - 4.0.4
     - 4.1.0
+    - 4.2.0
     - 5.0.0-pre.1
     - 5.0.0-pre.2
     - 5.0.0
@@ -3109,6 +3163,7 @@ m_ResolvedPackages:
     - 7.0.0-pre.3
     - 7.0.0-pre.4
     - 7.0.0
+    - 8.0.0-pre.1
     compatible:
     - 6.0.3
     verified: 6.0.3
@@ -3149,7 +3204,7 @@ m_ResolvedPackages:
     capabilities: 7
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 0
+  datePublishedTicks: 637817447740000000
   documentationUrl: 
   hasRepository: 1
   repository:
@@ -3408,11 +3463,13 @@ m_ResolvedPackages:
     - 1.7.0-pre.1
     - 1.7.0
     - 1.7.1
+    - 1.8.0-pre.1
     compatible:
     - 1.6.5
     - 1.7.0-pre.1
     - 1.7.0
     - 1.7.1
+    - 1.8.0-pre.1
     verified: 1.6.5
   dependencies:
   - name: com.unity.mathematics

@@ -98,26 +98,31 @@ public class CharacterMove : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) //прыжок если нажат пробел и игрок находится на платформе
+        if (!Input.GetKey(KeyCode.Space))
         {
+            anim.SetBool("SpaceKeyPressed", false);
+            anim.speed = 1;
+        }
+        else
+        {
+            anim.SetBool("SpaceKeyPressed", true);
+            anim.speed = 0.8f;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            keyPressCount = 1;
             rb.AddForce(transform.up * jump, ForceMode2D.Impulse);
+            anim.SetBool("SpaceKeyPressed", Input.GetKeyDown(KeyCode.Space));
+            anim.speed = 0.8f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded) //двойной прыжок в воздухе при двойном нажатии пробела
+        else if (Input.GetKeyDown(KeyCode.Space) && !isGrounded && keyPressCount == 1)
         {
-            keyPressCount++;
-
-            if (keyPressCount == 2)
-            {
-                rb.AddForce(transform.up * jump * 0.6f, ForceMode2D.Impulse);
-                keyPressCount = 0;
-            }
+            keyPressCount = 2;
+            float dJump = jump * 0.5f;
+            rb.AddForce(transform.up * dJump , ForceMode2D.Impulse);
         }
-
-        bool oncePress = false;
-        oncePress = Input.GetKey(KeyCode.Space);
-        anim.SetBool("SpaceKeyPressed", oncePress); //анимация прыжка (включается при удержании пробела)
-        oncePress = false;
     }
 
     //проверка на соприкосновение игрока с платформой
