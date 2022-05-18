@@ -1,33 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 public class CharacterMove : MonoBehaviour
 {
+    private RaycastHit2D raycastHit2D;
+    public float rayLenght;
     public float maxSpeed;
     public float jump;
-
+    public float countCrystall; //счетчик собираемых объектов
+    public TMP_Text countCrystallText; // текстовое поле дл€ вывода счета кристаллов
+    public TMP_Text accelerateText; 
+    public GameObject[] flipAxis;
+    public Joystick joystick;
+    
     private bool isFacingRight = true; //проверка в какую сторону направлен игрок
     private bool isGrounded = true; //проверка находитс€ ли игрок на платформе (Tilemap)
-    public float countCrystall; //счетчик собираемых объектов
-    private int keyPressCount = 0; //счетчик нажатий клавиши
+    private int keyPressCount; //счетчик нажатий клавиши
     private bool shiftPressed = true; //проверка нажати€ Shift
     private bool accelerateMove = true; // ускорение игрока
-
+    
     private Animator anim;
     private Rigidbody2D rb;
     private EdgeCollider2D ec;
     private CircleCollider2D ccl;
 
-    public TMP_Text countCrystallText; // текстовое поле дл€ вывода счета кристаллов
-    public TMP_Text accelerateText; 
-    public GameObject[] flipAxis;
+    
+    private static readonly int SpaceKeyPressed = Animator.StringToHash("SpaceKeyPressed");
+    private static readonly int TapKeyShift = Animator.StringToHash("TapKeyShift");
+    private static readonly int Speed = Animator.StringToHash("Speed");
+    private bool canJump = true;
 
     void Start()
     {
-        //инициализаци€ компнентов UnityEngine принадлежащих объекту игрока
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         ec = GetComponent<EdgeCollider2D>();
@@ -37,23 +44,28 @@ public class CharacterMove : MonoBehaviour
 
     //обработка методов на каждом кадре
     void Update()
-    {
+    {   
+#if UNITY_ANDROID
+        Android_HorizontalMove();
+        Android_Jump();
+#endif
+        
+#if UNITY_STANDALONE_WIN
         HorizontalMove();
         Jump();
+#endif
         PlayerBall();
         Acceleration();
     }
 
-    //обработка через фиксированное количество кадров
     void FixedUpdate()
     {
         float horizontalMove = Input.GetAxis("Horizontal");
-        anim.SetFloat("Speed", Mathf.Abs(horizontalMove)); //в компоненте анимаций измен€ем значение параметра Speed на значение оси ’ (анимаци€ ходьбы)
+        anim.SetFloat(Speed, Mathf.Abs(horizontalMove)); 
     }
+    
 
-
-    //горизональное движение игрока
-    public void HorizontalMove()
+    private void HorizontalMove()
     {
         //используем Input.GetAxis дл€ оси ’. метод возвращает значение оси в пределах от -1 до 1.
         //-1 возвращаетс€ при нажатии клавиши ј
@@ -63,19 +75,45 @@ public class CharacterMove : MonoBehaviour
         //обращаемс€ к компоненту персонажа RigidBody2D и задаем ему скорость по оси ’, 
         rb.velocity = new Vector2(move * maxSpeed, rb.velocity.y);
 
-        //если нажали клавишу дл€ перемещени€ вправо, а персонаж направлен влево
         if (move > 0 && !isFacingRight) 
         {
-            Flip(); //отражаем персонажа вправо
+            Flip(); 
         }
-        else if (move < 0 && isFacingRight) 
+        else if (move < 0 && isFacingRight)
         {
-            Flip(); //отражаем персонажа влево
+            Flip();
         }        
     }
+    
+    private void Android_HorizontalMove()
+    {
+        float horizontalMove = joystick.Horizontal * maxSpeed;
+        /*if (joystick.Horizontal >= .2f)
+        {
+            horizontalMove = maxSpeed;
+        }
+        else if (joystick.Horizontal <= -.2f)
+        {
+            horizontalMove = -maxSpeed;
+        }
+        else
+        {
+            horizontalMove = 0f;
+        }*/
+        
+        rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
 
-    //смена направлени€ движени€ персонажа и его зеркальное отражение
-    public void Flip()
+        if (horizontalMove > 0 && !isFacingRight) 
+        {
+            Flip(); 
+        }
+        else if (horizontalMove < 0 && isFacingRight)
+        {
+            Flip();
+        }
+    }
+
+    private void Flip()
     {
         FlipObjectAxis(); // смена направлени€ оси X при повороте налево
 
@@ -86,7 +124,7 @@ public class CharacterMove : MonoBehaviour
     }
 
     //смена напаравлени€ оси X объекта Fire point
-    public void FlipObjectAxis()
+    private void FlipObjectAxis()
     {
         int i = 0;
         while (i < flipAxis.Length)
@@ -96,16 +134,16 @@ public class CharacterMove : MonoBehaviour
         } 
     }
 
-    public void Jump()
+    private void Jump()
     {
         if (!Input.GetKey(KeyCode.Space))
         {
-            anim.SetBool("SpaceKeyPressed", false);
+            anim.SetBool(SpaceKeyPressed, false);
             anim.speed = 1;
         }
         else
         {
-            anim.SetBool("SpaceKeyPressed", true);
+            anim.SetBool(SpaceKeyPressed, true);
             anim.speed = 0.8f;
         }
         
@@ -113,7 +151,7 @@ public class CharacterMove : MonoBehaviour
         {
             keyPressCount = 1;
             rb.AddForce(transform.up * jump, ForceMode2D.Impulse);
-            anim.SetBool("SpaceKeyPressed", Input.GetKeyDown(KeyCode.Space));
+            anim.SetBool(SpaceKeyPressed, Input.GetKeyDown(KeyCode.Space));
             anim.speed = 0.8f;
         }
 
@@ -124,11 +162,46 @@ public class CharacterMove : MonoBehaviour
             rb.AddForce(transform.up * dJump , ForceMode2D.Impulse);
         }
     }
+    
+    private void Android_Jump()
+    {   
+        /*RaycastHit2D raycastHit2D = Physics2D.Raycast(
+            new Vector2(transform.position.x, (transform.position.y - 0.9f)), 
+            transform.localScale * Vector2.right * rayLenght,
+            rayLenght);
+        Debug.DrawRay(new Vector3(transform.position.x, transform.position.y -0.9f, transform.position.z), Vector2.right * rayLenght, Color.green);
+        
+        if (raycastHit2D.collider is not null)
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }*/
+        
+        
+        if (isGrounded && joystick.Vertical >= .1f && canJump)
+        {
+            //keyPressCount = 1;
+            rb.velocity = new Vector2(rb.velocity.x, jump);
 
+            //rb.AddForce(transform.up * jump, ForceMode2D.Impulse);
+            anim.speed = 0.8f;
+            anim.SetBool(SpaceKeyPressed, true);
+        }
+        else
+        {
+            anim.SetBool(SpaceKeyPressed, false);
+            anim.speed = 1;
+        }
+    }
+
+    
     //проверка на соприкосновение игрока с платформой
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Ground")
+        if (collision.collider.CompareTag("Ground"))
         {
             isGrounded = true;
         }
@@ -136,7 +209,7 @@ public class CharacterMove : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Ground")
+        if (collision.collider.CompareTag("Ground"))
         {
             isGrounded = false;
         }
@@ -145,24 +218,24 @@ public class CharacterMove : MonoBehaviour
     //счетчик кристаллов
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Collected Object")
+        if (collision.gameObject.CompareTag("Collected Object"))
         {
             Destroy(collision.gameObject); // уничтожение объекта если игрок столкнулс€ с ним
             countCrystall++;
-            countCrystallText.text = countCrystall.ToString();
+            countCrystallText.text = countCrystall.ToString(CultureInfo.CurrentCulture);
         }
     }
 
     //анимаци€ шара
-    public void PlayerBall()
+    private void PlayerBall()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift)) 
         {
             if(shiftPressed)
             {
-                ec.enabled = false; //выключаетс€ исходный коллайдер (BoxCollider2D)
-                ccl.enabled = true; //включаетс€ коллайдер круга (CircleCollider2D)
-                anim.SetBool("TapKeyShift", true); //анимаци€ шара
+                ec.enabled = false; 
+                ccl.enabled = true;
+                anim.SetBool(TapKeyShift, true);
 
                 maxSpeed += 2f;
                 jump += 4f;
@@ -173,9 +246,9 @@ public class CharacterMove : MonoBehaviour
 
             else
             {
-                ec.enabled = true; //выключаетс€ исходный коллайдер (BoxCollider2D)
-                ccl.enabled = false; //включаетс€ коллайдер круга (CircleCollider2D)
-                anim.SetBool("TapKeyShift", false); //анимаци€ шара
+                ec.enabled = true;
+                ccl.enabled = false;
+                anim.SetBool(TapKeyShift, false);
 
                 maxSpeed -= 2f;
                 jump -= 4f;
@@ -186,8 +259,7 @@ public class CharacterMove : MonoBehaviour
         }
     }
 
-    // ускорение игрока
-    public void Acceleration()
+    private void Acceleration()
     {
         if(Input.GetKeyDown(KeyCode.V))
         {
@@ -203,7 +275,6 @@ public class CharacterMove : MonoBehaviour
                 accelerateText.text = "Acceleration off [V]";
                 accelerateMove = true;
             }
-            
         }    
     }
 }
