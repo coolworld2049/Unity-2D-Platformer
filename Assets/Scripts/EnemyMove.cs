@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
@@ -9,7 +7,7 @@ public class EnemyMove : MonoBehaviour
 	private bool canJump = false;
 	private bool movingUp;
 	private bool movingRight;
-
+	private Health health;
 	private Rigidbody2D rb;
 
 	// траектория  движения объекта
@@ -23,6 +21,7 @@ public class EnemyMove : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		health = gameObject.GetComponent<Health>();
 	}
 
 	void Update()
@@ -62,8 +61,6 @@ public class EnemyMove : MonoBehaviour
 
 	void VerticalMoving()
 	{
-		Health health = gameObject.GetComponent<Health>();
-
 		if (movingUp)
 		{
 			if (health.HealthInitial > 0)
@@ -95,8 +92,6 @@ public class EnemyMove : MonoBehaviour
 
 	void HorizontalMoving()
 	{
-		Health health = gameObject.GetComponent<Health>();
-
 		if (movingRight)
 		{
 			if (health.HealthInitial > 0)
