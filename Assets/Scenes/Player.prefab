@@ -198,7 +198,6 @@ GameObject:
   - component: {fileID: 7108602028780444549}
   - component: {fileID: 8264468339184863192}
   - component: {fileID: 8264468339184863195}
-  - component: {fileID: 8264468339184863194}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -380,14 +379,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ccddfe6b4c5cc459b8561ffb7155d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePoint: []
+  bulletPrefab: []
+  weaponPrefab: []
+  bulletPrefabCount: 0
+  rayLenght: 0
   maxSpeed: 15
   jump: 50
   countCrystall: 0
   countCrystallText: {fileID: 0}
+  bulletsCount: {fileID: 0}
+  ammoSuplly: {fileID: 0}
   accelerateText: {fileID: 0}
   flipAxis:
   - {fileID: 8264468338930222928}
   - {fileID: 8264468338317124777}
+  joystick: {fileID: 0}
 --- !u!114 &8264468339184863195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,28 +409,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthInitial: 100
   healthMax: 100
---- !u!114 &8264468339184863194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264468339184863188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39a1cfeded160a4eb196b9bdda64fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint:
-  - {fileID: 8264468338930222929}
-  - {fileID: 8264468338317124782}
-  bulletPrefab:
-  - {fileID: 6120518384280248966, guid: 82668350b3c8c204cbf9d02163284753, type: 3}
-  - {fileID: 6120518384280248966, guid: c6a4562efbb25514f9574d608db69a2f, type: 3}
-  weaponPrefab:
-  - {fileID: 8264468338785182008}
-  - {fileID: 8264468339228204572}
-  bulletPrefabCount: 100
 --- !u!1 &8264468339228204572
 GameObject:
   m_ObjectHideFlags: 0

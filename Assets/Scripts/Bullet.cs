@@ -27,13 +27,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == toDamageTag)
+        if (collision.gameObject.CompareTag(toDamageTag))
         {
             Health health = collision.gameObject.GetComponent<Health>(); //экземпляр класса
             health.TakeDamage(collisonDamage); //обращение к методу получения урона из класса Health
             Destroy(gameObject); //пуля уничтожается при соприкосновении его колайдера с любым объектом
         }
-        else if (collision.gameObject.tag == "Ground")
+        else if (collision.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject); //пуля уничтожается при соприкосновении его колайдера с любым объектом
         }

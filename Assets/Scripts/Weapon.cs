@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -6,30 +7,53 @@ public class Weapon : MonoBehaviour
     public Transform[] firePoint; //позиция из которой будут вылетать пули
     public GameObject[] bulletPrefab; //префаб пуль
     [FormerlySerializedAs("weaponName")] public GameObject[] weaponPrefab; //объекты пушек
-    public int bulletPrefabCount = 100;
-
-    private int gun_0 = 0;
-    private int gun_1 = 1;
+    public int bulletPrefabCount = 1000;
     
-    void Update()
+    
+#if UNITY_STANDALONE_WIN
+    protected void Shoot()
     {
-        //P90
-        if(weaponPrefab[gun_0].activeInHierarchy && weaponPrefab[gun_0].gameObject.name == "P90")
+        for (int j = 0; j < weaponPrefab.Length; j++)
         {
-            if ((Input.GetButton("Fire1")) && (bulletPrefabCount >= 0))
+            if(weaponPrefab[j].activeInHierarchy && bulletPrefabCount >= 0)
             {
-                Instantiate(bulletPrefab[gun_0], firePoint[gun_0].position, firePoint[gun_0].rotation); //shooting
+                Instantiate(bulletPrefab[j], firePoint[j].position, firePoint[j].rotation);
                 bulletPrefabCount -= 1;
             }
         }
+    }
+        
+#endif    
+#if UNITY_ANDROID
+    protected void Android_Shoot()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-        //AWP
-        if (weaponPrefab[gun_1].activeInHierarchy && weaponPrefab[gun_1].gameObject.name == "AWP")
+        if (Physics.Raycast(ray, out hit)) 
         {
-            if (Input.GetButton("Fire1")) 
+                        
+        }
+        for (int i = 0; i < Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase is TouchPhase.Stationary or TouchPhase.Moved)
             {
-                Instantiate(bulletPrefab[1], firePoint[gun_1].position, firePoint[gun_1].rotation); // shooting
+                /*Vector3 newDir = Vector3.RotateTowards(
+                    transform.forward, 
+                    (new Vector3(Input.GetTouch(i).position.x,Input.GetTouch(i).position.y, 0.0f)), 
+                    3.14159F, 0.0F);
+                Quaternion rotation = Quaternion.LookRotation(newDir);*/
+                for (int j = 0; j < weaponPrefab.Length; j++)
+                {
+                    if(weaponPrefab[j].activeInHierarchy && bulletPrefabCount >= 0)
+                    {
+                        Instantiate(bulletPrefab[j], firePoint[j].position, rotation);
+                        bulletPrefabCount -= 1;
+                    }
+                }
             }
         }
     }
+#endif
+
 }

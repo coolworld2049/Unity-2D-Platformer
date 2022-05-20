@@ -1,26 +1,28 @@
 using System.Globalization;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
-using Button = UnityEngine.UI.Button;
 
-public class CharacterMove : MonoBehaviour
+public class CharacterMove : Weapon
 {
     private RaycastHit2D raycastHit2D;
     public float rayLenght;
     public float maxSpeed;
     public float jump;
-    public float countCrystall; //счетчик собираемых объектов
-    public TMP_Text countCrystallText; // текстовое поле для вывода счета кристаллов
+    public float countCrystall;
+    public TMP_Text countCrystallText;
+    public TMP_Text bulletsCount;
+    public TMP_Text ammoSuplly;
+
+
     public TMP_Text accelerateText; 
     public GameObject[] flipAxis;
     public Joystick joystick;
     
-    private bool isFacingRight = true; //проверка в какую сторону направлен игрок
-    private bool isGrounded = true; //проверка находится ли игрок на платформе (Tilemap)
-    private int keyPressCount; //счетчик нажатий клавиши
-    private bool shiftPressed = true; //проверка нажатия Shift
-    private bool accelerateMove = true; // ускорение игрока
+    private bool isFacingRight = true;
+    private bool isGrounded = true;
+    private int keyPressCount; 
+    private bool shiftPressed = true; 
+    private bool accelerateMove = true;
     
     private Animator anim;
     private Rigidbody2D rb;
@@ -40,22 +42,26 @@ public class CharacterMove : MonoBehaviour
         ec = GetComponent<EdgeCollider2D>();
         ccl = GetComponent<CircleCollider2D>();
         ccl.enabled = false;
+        ammoSuplly.text = bulletPrefabCount.ToString();
     }
 
     //обработка методов на каждом кадре
     void Update()
-    {   
+    {
 #if UNITY_ANDROID
         Android_HorizontalMove();
         Android_Jump();
+        Android_Shoot();
 #endif
         
 #if UNITY_STANDALONE_WIN
         HorizontalMove();
         Jump();
+        Shoot();
 #endif
         PlayerBall();
         Acceleration();
+        bulletsCount.text = bulletPrefabCount.ToString();
     }
 
     void FixedUpdate()
