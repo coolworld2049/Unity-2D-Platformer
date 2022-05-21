@@ -1,26 +1,29 @@
 using System.Globalization;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
-using Button = UnityEngine.UI.Button;
 
-public class CharacterMove : MonoBehaviour
+public class CharacterMove : Weapon
 {
     private RaycastHit2D raycastHit2D;
     public float rayLenght;
     public float maxSpeed;
     public float jump;
-    public float countCrystall; //счетчик собираемых объектов
-    public TMP_Text countCrystallText; // текстовое поле для вывода счета кристаллов
+    public float countCrystall;
+    public TMP_Text countCrystallText;
+    public TMP_Text bulletsCount;
+    public TMP_Text ammoSuplly;
+
+
     public TMP_Text accelerateText; 
     public GameObject[] flipAxis;
     public Joystick joystick;
+    public RectTransform handleJoystick;
     
-    private bool isFacingRight = true; //проверка в какую сторону направлен игрок
-    private bool isGrounded = true; //проверка находится ли игрок на платформе (Tilemap)
-    private int keyPressCount; //счетчик нажатий клавиши
-    private bool shiftPressed = true; //проверка нажатия Shift
-    private bool accelerateMove = true; // ускорение игрока
+    private bool isFacingRight = true;
+    private bool isGrounded = true;
+    private int keyPressCount; 
+    private bool shiftPressed = true; 
+    private bool accelerateMove = true;
     
     private Animator anim;
     private Rigidbody2D rb;
@@ -32,7 +35,10 @@ public class CharacterMove : MonoBehaviour
     private static readonly int TapKeyShift = Animator.StringToHash("TapKeyShift");
     private static readonly int Speed = Animator.StringToHash("Speed");
     private bool canJump = true;
-
+    public bool IsFacingRight
+    {
+        get => isFacingRight;
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -40,28 +46,46 @@ public class CharacterMove : MonoBehaviour
         ec = GetComponent<EdgeCollider2D>();
         ccl = GetComponent<CircleCollider2D>();
         ccl.enabled = false;
+        ammoSuplly.text = bulletPrefabCount.ToString();
     }
 
     //обработка методов на каждом кадре
     void Update()
-    {   
+    {
 #if UNITY_ANDROID
         Android_HorizontalMove();
         Android_Jump();
-#endif
+        Android_Shoot_Raycast();
+        if ((handleJoystick.localPosition.x != 0) && (handleJoystick.transform.position.y != 0))
+        {
+            CanShoot = false;
+        }
+        else
+        {
+            CanShoot = true;
+        }
+    #endif
         
 #if UNITY_STANDALONE_WIN
         HorizontalMove();
         Jump();
-#endif
+        Shoot();
+    #endif
         PlayerBall();
         Acceleration();
+        bulletsCount.text = bulletPrefabCount.ToString();
     }
 
     void FixedUpdate()
     {
+#if UNITY_STANDALONE_WIN
+
         float horizontalMove = Input.GetAxis("Horizontal");
         anim.SetFloat(Speed, Mathf.Abs(horizontalMove)); 
+    #endif
+#if UNITY_ANDROID
+        anim.SetFloat(Speed, Mathf.Abs(joystick.Horizontal));
+    #endif
     }
     
 
@@ -100,7 +124,6 @@ public class CharacterMove : MonoBehaviour
         {
             horizontalMove = 0f;
         }*/
-        
         rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
 
         if (horizontalMove > 0 && !isFacingRight) 
@@ -113,7 +136,7 @@ public class CharacterMove : MonoBehaviour
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         FlipObjectAxis(); // смена направления оси X при повороте налево
 
@@ -179,7 +202,6 @@ public class CharacterMove : MonoBehaviour
         {
             canJump = false;
         }*/
-        
         
         if (isGrounded && joystick.Vertical >= .1f && canJump)
         {
