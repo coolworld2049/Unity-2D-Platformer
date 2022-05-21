@@ -17,6 +17,7 @@ public class CharacterMove : Weapon
     public TMP_Text accelerateText; 
     public GameObject[] flipAxis;
     public Joystick joystick;
+    public RectTransform handleJoystick;
     
     private bool isFacingRight = true;
     private bool isGrounded = true;
@@ -34,7 +35,10 @@ public class CharacterMove : Weapon
     private static readonly int TapKeyShift = Animator.StringToHash("TapKeyShift");
     private static readonly int Speed = Animator.StringToHash("Speed");
     private bool canJump = true;
-
+    public bool IsFacingRight
+    {
+        get => isFacingRight;
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -51,14 +55,22 @@ public class CharacterMove : Weapon
 #if UNITY_ANDROID
         Android_HorizontalMove();
         Android_Jump();
-        Android_Shoot();
-#endif
+        Android_Shoot_Raycast();
+        if ((handleJoystick.localPosition.x != 0) && (handleJoystick.transform.position.y != 0))
+        {
+            CanShoot = false;
+        }
+        else
+        {
+            CanShoot = true;
+        }
+    #endif
         
 #if UNITY_STANDALONE_WIN
         HorizontalMove();
         Jump();
         Shoot();
-#endif
+    #endif
         PlayerBall();
         Acceleration();
         bulletsCount.text = bulletPrefabCount.ToString();
@@ -66,8 +78,14 @@ public class CharacterMove : Weapon
 
     void FixedUpdate()
     {
+#if UNITY_STANDALONE_WIN
+
         float horizontalMove = Input.GetAxis("Horizontal");
         anim.SetFloat(Speed, Mathf.Abs(horizontalMove)); 
+    #endif
+#if UNITY_ANDROID
+        anim.SetFloat(Speed, Mathf.Abs(joystick.Horizontal));
+    #endif
     }
     
 
@@ -106,7 +124,6 @@ public class CharacterMove : Weapon
         {
             horizontalMove = 0f;
         }*/
-        
         rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
 
         if (horizontalMove > 0 && !isFacingRight) 
@@ -119,7 +136,7 @@ public class CharacterMove : Weapon
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         FlipObjectAxis(); // смена направления оси X при повороте налево
 
@@ -185,7 +202,6 @@ public class CharacterMove : Weapon
         {
             canJump = false;
         }*/
-        
         
         if (isGrounded && joystick.Vertical >= .1f && canJump)
         {
