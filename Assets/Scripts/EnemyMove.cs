@@ -4,7 +4,7 @@ public class EnemyMove : MonoBehaviour
 {
 	public float Speed = 8f;
 	public float DeploymentHeight = 1;
-	private bool canJump = false;
+	private bool canJump = true;
 	private bool movingUp;
 	private bool movingRight;
 	private Health health;
@@ -123,13 +123,13 @@ public class EnemyMove : MonoBehaviour
 
 	public void Jump()
 	{
-		RaycastHit hit;
+		/*RaycastHit hit;
 		Ray landingRay = new Ray(transform.position, Vector3.down);
 		Debug.DrawRay(transform.position, Vector2.right * DeploymentHeight, Color.red);
 		if (Physics.Raycast(landingRay, out hit, DeploymentHeight))
 		{
 			canJump = hit.collider != null;
-		}
+		}*/
 
 		if (canJump)
 		{

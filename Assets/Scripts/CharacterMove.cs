@@ -49,30 +49,24 @@ public class CharacterMove : Weapon
         ammoSuplly.text = bulletPrefabCount.ToString();
     }
 
-    //обработка методов на каждом кадре
     void Update()
     {
 #if UNITY_ANDROID
         Android_HorizontalMove();
         Android_Jump();
         Android_Shoot_Raycast();
-        if ((handleJoystick.localPosition.x != 0) && (handleJoystick.transform.position.y != 0))
-        {
-            CanShoot = false;
-        }
-        else
-        {
-            CanShoot = true;
-        }
-    #endif
+        TurnIntoBall_Android();
+        Acceleration_Android();
+#endif
         
 #if UNITY_STANDALONE_WIN
         HorizontalMove();
         Jump();
         Shoot();
-    #endif
-        PlayerBall();
+        TurnIntoBall();
         Acceleration();
+    #endif
+        
         bulletsCount.text = bulletPrefabCount.ToString();
     }
 
@@ -124,6 +118,7 @@ public class CharacterMove : Weapon
         {
             horizontalMove = 0f;
         }*/
+        
         rb.velocity = new Vector2(horizontalMove, rb.velocity.y);
 
         if (horizontalMove > 0 && !isFacingRight) 
@@ -202,13 +197,28 @@ public class CharacterMove : Weapon
         {
             canJump = false;
         }*/
-        
-        if (isGrounded && joystick.Vertical >= .1f && canJump)
+        if ((handleJoystick.localPosition.x != 0) && (handleJoystick.transform.position.y != 0))
         {
-            //keyPressCount = 1;
+            CanShoot = false;
+        }
+        else
+        {
+            CanShoot = true;
+        }
+        
+        if (isGrounded)
+        {
+            canJump = true;
+        }
+        else
+        {
+            canJump = false;
+        }
+        
+        if (joystick.Vertical >= .1f && canJump)
+        {
+            keyPressCount = 1;
             rb.velocity = new Vector2(rb.velocity.x, jump);
-
-            //rb.AddForce(transform.up * jump, ForceMode2D.Impulse);
             anim.speed = 0.8f;
             anim.SetBool(SpaceKeyPressed, true);
         }
@@ -249,7 +259,7 @@ public class CharacterMove : Weapon
     }
 
     //анимация шара
-    private void PlayerBall()
+    private void TurnIntoBall()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift)) 
         {
@@ -281,6 +291,49 @@ public class CharacterMove : Weapon
         }
     }
 
+    private void TurnIntoBall_Android()
+    {
+        for (int i = 0; i < Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(i).position);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    Debug.Log(hit.collider.name);
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        if(shiftPressed)
+                        {
+                            ec.enabled = false; 
+                            ccl.enabled = true;
+                            anim.SetBool(TapKeyShift, true);
+
+                            maxSpeed += 2f;
+                            jump += 4f;
+                            accelerateText.text = "Ball on [Shift] +2 speed +4 jump";
+
+                            shiftPressed = false;
+                        }
+                        else
+                        {
+                            ec.enabled = true;
+                            ccl.enabled = false;
+                            anim.SetBool(TapKeyShift, false);
+
+                            maxSpeed -= 2f;
+                            jump -= 4f;
+                            accelerateText.text = "Ball off [Shift]";
+
+                            shiftPressed = true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private void Acceleration()
     {
         if(Input.GetKeyDown(KeyCode.V))
@@ -298,5 +351,35 @@ public class CharacterMove : Weapon
                 accelerateMove = true;
             }
         }    
+    }
+
+    private void Acceleration_Android()
+    {
+        for (int i = 0; i < Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                Ray ray = mainCamera.ScreenPointToRay(Input.GetTouch(i).position);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.CompareTag("Player"))
+                    {
+                        if(accelerateMove && shiftPressed)
+                        {
+                            maxSpeed += 5f;
+                            accelerateText.text = "Acceleration on [V] +5 speed";
+                            accelerateMove = false;
+                        }
+                        else
+                        {
+                            maxSpeed -= 5f;
+                            accelerateText.text = "Acceleration off [V]";
+                            accelerateMove = true;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

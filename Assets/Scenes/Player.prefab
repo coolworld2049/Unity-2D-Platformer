@@ -174,8 +174,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8264468338930222928}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.83, y: -0.045, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.834, y: -0.037, z: 0}
   m_LocalScale: {x: -1.552, y: 1.552, z: 1.552}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 7108602028780444549}
   - component: {fileID: 8264468339184863192}
   - component: {fileID: 8264468339184863195}
+  - component: {fileID: 7370976658170662813}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -214,7 +215,7 @@ Transform:
   m_GameObject: {fileID: 8264468339184863188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.3, y: -2.85, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.12, y: 1.12, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8264468338785182012}
@@ -322,7 +323,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2.3730469
+  m_Mass: 2.373047
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
@@ -345,10 +346,11 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0.07
+  m_EdgeRadius: 0
   m_Points:
   - {x: -0.07300949, y: -0.80537844}
-  - {x: -0.22367287, y: -0.8055897}
+  - {x: -0.22665082, y: -0.8069135}
+  - {x: -0.51499313, y: -0.39371824}
   - {x: -0.22411346, y: -0.38651252}
   - {x: -0.5234318, y: -0.38909984}
   - {x: -0.686697, y: -0.23752642}
@@ -360,8 +362,8 @@ EdgeCollider2D:
   - {x: 0.6423092, y: -0.24135804}
   - {x: 0.49775696, y: -0.38157058}
   - {x: 0.14950943, y: -0.38057232}
-  - {x: 0.14961815, y: -0.43213654}
-  - {x: 0.15141869, y: -0.8078165}
+  - {x: 0.5062378, y: -0.38191196}
+  - {x: 0.17150716, y: -0.8078234}
   - {x: -0.0037231445, y: -0.8068894}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -379,13 +381,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ccddfe6b4c5cc459b8561ffb7155d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: []
-  bulletPrefab: []
-  weaponPrefab: []
-  bulletPrefabCount: 0
-  rayLenght: 0
-  maxSpeed: 15
-  jump: 50
+  firePoint:
+  - {fileID: 8264468338930222929}
+  bulletPrefab:
+  - {fileID: 6120518384280248966, guid: 82668350b3c8c204cbf9d02163284753, type: 3}
+  weaponPrefab:
+  - {fileID: 8264468338785182008}
+  bulletPrefabCount: 1000
+  mainCamera: {fileID: 0}
+  rayLenght: 1.5
+  maxSpeed: 12
+  jump: 22
   countCrystall: 0
   countCrystallText: {fileID: 0}
   bulletsCount: {fileID: 0}
@@ -395,6 +401,7 @@ MonoBehaviour:
   - {fileID: 8264468338930222928}
   - {fileID: 8264468338317124777}
   joystick: {fileID: 0}
+  handleJoystick: {fileID: 0}
 --- !u!114 &8264468339184863195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +416,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthInitial: 100
   healthMax: 100
+--- !u!70 &7370976658170662813
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264468339184863188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: e3864a3824af2904088e6249f653d363, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.06}
+  m_Size: {x: 0.91, y: 0.03}
+  m_Direction: 0
 --- !u!1 &8264468339228204572
 GameObject:
   m_ObjectHideFlags: 0
