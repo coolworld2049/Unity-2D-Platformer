@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
         }
     }
         
-#endif    
+    #endif    
 #if UNITY_ANDROID
     protected void Android_Shoot_Raycast()
     {
@@ -71,7 +71,5 @@ public class Weapon : MonoBehaviour
             }
         }
     }
-    
-#endif
-
+    #endif
 }
